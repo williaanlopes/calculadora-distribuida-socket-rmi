@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: base.jar org.json.jar org.json.simple.jar
+Main-Class: cliente.app.Calculadora
+

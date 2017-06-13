@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: app.ServidorZumbiApp
+Class-Path: commons.collections.jar org.json.jar org.json.simple.jar
+
