@@ -22,6 +22,8 @@ import org.json.simple.parser.JSONParser;
  */
 public class JsonObjectIO {
 
+	private static final String TAG = "# ServidorPrincipal -> ";
+	
 	private Socket socket = null;
 
 	public JsonObjectIO() {
@@ -39,15 +41,15 @@ public class JsonObjectIO {
 	 */
 	public void sendJson(JSONObject obj) {
 		
-		System.out.println("-> Enviando Json...");
+		System.out.println(TAG + "Enviando JSON...");
 		try {
 			OutputStream out = socket.getOutputStream();
 			ObjectOutputStream o = new ObjectOutputStream(out);
 			o.writeObject(obj.toString());
 			out.flush();
-			System.out.println("-> Json enviado!");
+			System.out.println(TAG + "JSON enviado!");
 		} catch (Exception e) {
-			System.err.println("-> Erro ao enviar Json");
+			System.err.println(TAG + "Erro: ao enviar JSON " + e.getMessage());
 			new RuntimeException(e);
 		}
 	}
@@ -61,7 +63,7 @@ public class JsonObjectIO {
 	 */
 	public JSONObject getJsonObject() throws JSONException, IOException, ClassNotFoundException {
 
-		System.out.println("-> Lendo Json...");
+		System.out.println(TAG + "Lendo Json...");
 
 		JSONObject json;
 		String resposta = null;
@@ -72,7 +74,7 @@ public class JsonObjectIO {
 
 		json = new JSONObject(resposta);
 
-		System.out.println("-> Json lido!");
+		System.out.println(TAG + "JSON lido!");
 
 		return json;
 	}

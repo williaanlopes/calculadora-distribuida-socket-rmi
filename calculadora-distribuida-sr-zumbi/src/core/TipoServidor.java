@@ -1,4 +1,4 @@
-package util;
+package core;
 
 /** 
  * Define os tipos de operacao existentes 

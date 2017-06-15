@@ -2,6 +2,7 @@ package app;
 
 import java.io.IOException;
 
+import service.PrincipalService;
 import util.PoolExecutorRunnable;
 
 public class ServidorPrincipalApp {
@@ -10,8 +11,8 @@ public class ServidorPrincipalApp {
 
 	public static void main(String[] args) {
 
-		 String s = "10000";
-
+		 String s = "10100";
+//
 //		if (!isArgsValid(args)) {
 //			showUsageMode();
 //			System.exit(1);
@@ -22,7 +23,7 @@ public class ServidorPrincipalApp {
 
 		try {
 			
-			PrincipalServer mainServer = new PrincipalServer(serverPort);
+			PrincipalService mainServer = new PrincipalService(serverPort);
 			poolExecutor = new PoolExecutorRunnable(mainServer);
 			poolExecutor.start();
 

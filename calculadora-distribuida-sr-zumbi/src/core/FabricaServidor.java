@@ -1,7 +1,6 @@
-package servidor;
+package core;
 
 import stub.Basico;
-import util.TipoServidor;
 
 /** 
  * Fabrica de servidores 

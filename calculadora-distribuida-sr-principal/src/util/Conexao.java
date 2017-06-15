@@ -18,6 +18,8 @@ import org.json.JSONObject;
  * Responsavel pela conexao com os servidores
  */
 public abstract class Conexao {
+	
+	private static final String TAG = "# ServidorPrincipal -> ";
 
 	protected Socket socket = null;
 	protected int serverPort = 0;
@@ -72,7 +74,7 @@ public abstract class Conexao {
 		configure();
 		this.socket = new Socket(this.serverAddress, this.serverPort);
 		this.jsonObjectIO = new JsonObjectIO(socket);
-		System.out.println("serverConneciont -> " + this.serverAddress + " - " + this.serverPort);
+		System.out.println(TAG + "serverConneciont " + this.serverAddress + " - " + this.serverPort);
 	}
 	
 	public final boolean openByJson(String s) {
@@ -86,7 +88,7 @@ public abstract class Conexao {
 			// TODO: handle exception
 		}	
 		
-		System.out.println("serverConneciont -> " + this.serverAddress + " - " + this.serverPort);
+		System.out.println(TAG + "serverConneciont " + this.serverAddress + " - " + this.serverPort);
 		return rt;		
 	}
 
@@ -111,13 +113,14 @@ public abstract class Conexao {
 	}
 
 	public void sendJsonToServer(JSONObject obj) throws JSONException, IOException, ClassNotFoundException {
-
+		System.out.println(TAG + "enviado JSON...");
+		
 		OutputStream out = socket.getOutputStream();
 		ObjectOutputStream oos = new ObjectOutputStream(out);
 		oos.writeObject(obj.toString());
 		out.flush();
 
-		System.out.println(this.getClass().getSimpleName() + " " + obj);
+		System.out.println(TAG + "JSON enviado!");
 	}
 
 	/**

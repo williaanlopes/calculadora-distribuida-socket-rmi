@@ -12,14 +12,14 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
 
-public class PropertiesFile {
+public class Util {
 	
 	/**
 	 * Carrega as configuracoes do arquivo de propriedades.
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
-	public static Map<String, String> loadProperties(String fileName) throws FileNotFoundException, IOException {
+	public static Map<String, String> readProperties(String fileName) throws FileNotFoundException, IOException {
 		
 		Map<String, String> map = new HashMap<>();
 		
@@ -59,9 +59,9 @@ public class PropertiesFile {
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
-	public static void writeProperties(Map<String, String> parametros) throws FileNotFoundException, IOException {
+	public static void writeProperties(String fileName, Map<String, String> parametros) throws FileNotFoundException, IOException {
 
-		String propFileName = ".\\servidorZumbi.properties";
+		String propFileName = ".\\" + fileName + ".properties";
 		Properties properties = new Properties();
 		OutputStream output = new FileOutputStream(propFileName);
 

@@ -1,4 +1,4 @@
-package servidor;
+package core;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -13,13 +13,13 @@ import stub.Basico;
 public class ServidorBasico extends UnicastRemoteObject implements Basico {  
 
 	private static final long serialVersionUID = 1L;
+	private static final String TAG = "# ServidorZumbi -> ";
+	
+	private JSONObject json = null;
 
 	public ServidorBasico() throws RemoteException {
 		super();
 	}
-
-	private JSONObject json = null;
-    private static final String TAG = "# " + ServidorBasico.class.getSimpleName() + " Log -> ";
 
 	@Override
 	public String getNomeServidor() throws RemoteException {
@@ -35,15 +35,13 @@ public class ServidorBasico extends UnicastRemoteObject implements Basico {
 	@Override
 	public String getJsonObject() throws RemoteException {
 		
-		System.out.println(TAG + "JSON Recebido!");
+		System.out.println(TAG + "JSON Recebido: " + this.json);
 		System.out.println(TAG + "Descobrindo operacao...");  
         
         String valor1 = this.json.getString("valor1");
         String valor2 = this.json.getString("valor2");
         String operador = this.json.getString("operacao");
         Double resultado = 0d;
-        
-        System.out.println(TAG + this.json);
         
         switch (operador) {
 		case "ADD":

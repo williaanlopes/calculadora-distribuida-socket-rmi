@@ -13,6 +13,8 @@ import util.Conexao;
  * com as operacoes
  */
 public class ParametroJson {
+	
+	private static final String TAG = "# Cliente -> ";
 
 	private List<Double> params = null;
 	private String operacao = null;
@@ -37,7 +39,10 @@ public class ParametroJson {
 		}
 		
 		Double returnValue = 0d;
+		
 		try {
+			
+			System.out.println(TAG + "Estabelecendo conexao com servidor principal...");
 			
 			conexao = new ClienteConexaoPrincipal(".\\cliente.properties");
 			conexao.openByProperties();
@@ -46,8 +51,10 @@ public class ParametroJson {
 			JSONObject clienteJson = conexao.getJsonFromServer();
 			returnValue = getResultFromJson(clienteJson);
 			
+			System.out.println(TAG + "Conexao com servidor principal estabelecida!");
+			
 		} catch (JSONException | IOException | ClassNotFoundException e) {
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 		return returnValue;
 	}
@@ -58,10 +65,14 @@ public class ParametroJson {
 	 */
 	private JSONObject jsonParams() {
 
+		System.out.println(TAG + "Setando parametros...");
+		
 		JSONObject json = new JSONObject();
 		json.put("valor1", this.params.get(0).toString());
 		json.put("valor2", this.params.get(1).toString());
 		json.put("operacao", this.operacao);
+		
+		System.out.println(TAG + "Parametros setados!");
 		
 		return json;
 	}
@@ -80,7 +91,11 @@ public class ParametroJson {
 	 * @return valor da operacao
 	 */
 	private Double getResultFromJson(JSONObject obj) {
+		System.out.println(TAG + "Recebendo resultado...");
+		
 		Double returnValue = obj.getDouble("valor");
+		
+		System.out.println(TAG + "Resultado recebido!");
 		return returnValue;
 	}
 

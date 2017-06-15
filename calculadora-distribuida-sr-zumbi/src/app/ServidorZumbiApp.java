@@ -1,7 +1,8 @@
 package app;
 
-import util.PoolExecutorRunnable;
-import util.TipoServidor;
+import core.PoolExecutorRunnable;
+import core.TipoServidor;
+import service.ZumbiService;
 
 /**
  * aplicacao zumbi
@@ -21,7 +22,7 @@ public class ServidorZumbiApp {
 
 		try {
 			
-			ZumbiServer operatorServer = new ZumbiServer(server.toUpperCase());
+			ZumbiService operatorServer = new ZumbiService(server.toUpperCase());
 			poolExecutor = new PoolExecutorRunnable(operatorServer);
 			poolExecutor.start();
 			

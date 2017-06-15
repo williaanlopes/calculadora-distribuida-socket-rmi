@@ -1,4 +1,4 @@
-package servidor;
+package core;
 
 import org.json.JSONObject;
 
@@ -9,8 +9,8 @@ import stub.Especial;
  */
 public class ServidorEspecial implements Especial {
 
+	private static final String TAG = "# ServidorZumbi -> ";
 	private JSONObject json = null;
-	private static final String TAG = ServidorEspecial.class.getSimpleName() + " -> ";
 
 	@Override
 	public String getNomeServidor() {
@@ -25,7 +25,9 @@ public class ServidorEspecial implements Especial {
 
 	@Override
 	public String getJsonObject() {
-		System.out.println(TAG + "Efetuando operacao...");
+		
+		System.out.println(TAG + "JSON Recebido: " + this.json);
+		System.out.println(TAG + "Descobrindo operacao...");  
 
 		String valor1 = this.json.getString("valor1");
 		String valor2 = this.json.getString("valor2");

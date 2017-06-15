@@ -12,7 +12,7 @@ import util.TipoServidor;
 
 public class QueueServer {
 	
-	private static final String TAG = "# " + QueueServer.class.getSimpleName() + " -> ";
+	private static final String TAG = "# ServidorPrincipal -> ";
 
 	private List<String> basicHosts = new ArrayList<>();
 	private List<String> specialHosts = new ArrayList<>();

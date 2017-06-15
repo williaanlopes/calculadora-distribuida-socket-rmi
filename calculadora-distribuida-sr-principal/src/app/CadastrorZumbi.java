@@ -11,11 +11,11 @@ import stub.Principal;
 public class CadastrorZumbi extends UnicastRemoteObject implements Principal {
 
 	private static final long serialVersionUID = 1L;
-	private static final String TAG = "# " + CadastrorZumbi.class.getSimpleName() + " -> ";
+	private static final String TAG = "# ServidorPrincipal -> ";
 	
 	private QueueServer queue = null;
 
-	protected CadastrorZumbi(QueueServer queue) throws RemoteException {
+	public CadastrorZumbi(QueueServer queue) throws RemoteException {
 		super();
 		this.queue = queue;
 	}
